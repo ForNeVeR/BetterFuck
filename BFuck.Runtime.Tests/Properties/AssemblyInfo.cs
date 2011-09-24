@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("BFuck.Runtime.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("BFuck.Runtime.Tests")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
+[assembly: AssemblyCompany("ForNeVeR")]
+[assembly: AssemblyProduct("BFuck")]
+[assembly: AssemblyCopyright("Copyright (C) 2011 by ForNeVeR")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
