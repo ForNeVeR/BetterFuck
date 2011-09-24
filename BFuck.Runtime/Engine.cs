@@ -19,14 +19,48 @@
  * THE SOFTWARE.
  */
 
+using System.Collections.Generic;
+
 namespace BFuck.Runtime
 {
     /// <summary>
     /// Engine of BetterFuck interpreter.
     /// </summary>
-    /// <typeparam name="TValue">Type of underlying memory cells.</typeparam>
-    public class Engine<TValue>
+    public class Engine
     {
+        #region Private data
+
+        /// <summary>
+        /// Index of current selected cell.
+        /// </summary>
+        private long _pointer;
+
+        /// <summary>
+        /// Memory size in value units.
+        /// </summary>
+        private readonly long _memorySize;
+
+        /// <summary>
+        /// List of memory values.
+        /// </summary>
+        private List<char> _memory;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor of BFuck engine.
+        /// </summary>
+        /// <param name="memorySize">Size of BFuck memory.</param>
+        public Engine(long memorySize)
+        {
+            _memorySize = memorySize;
+            _memory = new List<char>();
+        }
+
+        #endregion
+        
         #region Cell movement
         
         /// <summary>
@@ -54,7 +88,7 @@ namespace BFuck.Runtime
         /// </summary>
         public void Add()
         {
-            
+            _memory[0] = 0;
         }
 
         /// <summary>
