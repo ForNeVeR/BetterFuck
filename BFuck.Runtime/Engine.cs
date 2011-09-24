@@ -19,7 +19,9 @@
  * THE SOFTWARE.
  */
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BFuck.Runtime
 {
@@ -33,17 +35,17 @@ namespace BFuck.Runtime
         /// <summary>
         /// Index of current selected cell.
         /// </summary>
-        private long _pointer;
+        private int _pointer;
 
         /// <summary>
         /// Memory size in value units.
         /// </summary>
-        private readonly long _memorySize;
+        private readonly int _memorySize;
 
         /// <summary>
         /// List of memory values.
         /// </summary>
-        private List<char> _memory;
+        private readonly List<char> _memory;
 
         #endregion
 
@@ -53,7 +55,7 @@ namespace BFuck.Runtime
         /// Constructor of BFuck engine.
         /// </summary>
         /// <param name="memorySize">Size of BFuck memory.</param>
-        public Engine(long memorySize)
+        public Engine(int memorySize)
         {
             _memorySize = memorySize;
             _memory = new List<char>();
@@ -68,7 +70,9 @@ namespace BFuck.Runtime
         /// </summary>
         public void Back()
         {
-            
+            --_pointer;
+            if (_pointer < 0)
+                _pointer = _memorySize - 1;
         }
 
         /// <summary>
@@ -76,19 +80,22 @@ namespace BFuck.Runtime
         /// </summary>
         public void Forward()
         {
-            
+            ++_pointer;
+            if (_pointer >= _memorySize)
+                _pointer = 0;
         }
 
         #endregion
 
-        #region Data management
+        #region Data access
 
         /// <summary>
         /// Adds one to current cell value.
         /// </summary>
         public void Add()
         {
-            _memory[0] = 0;
+            EnsureMemoryExpanded();
+            _memory[_pointer] += (char) 1;
         }
 
         /// <summary>
@@ -96,7 +103,17 @@ namespace BFuck.Runtime
         /// </summary>
         public void Dec()
         {
-            
+            EnsureMemoryExpanded();
+            _memory[_pointer] -= (char)1;
+        }
+
+        /// <summary>
+        /// Returns value from current cell.
+        /// </summary>
+        public char Get()
+        {
+            EnsureMemoryExpanded();
+            return _memory[_pointer];
         }
 
         #endregion
@@ -108,7 +125,8 @@ namespace BFuck.Runtime
         /// </summary>
         public void Out()
         {
-            
+            EnsureMemoryExpanded();
+            Console.Write(_memory[_pointer]);
         }
 
         /// <summary>
@@ -116,15 +134,24 @@ namespace BFuck.Runtime
         /// </summary>
         public void In()
         {
-            
+            EnsureMemoryExpanded();
+            _memory[_pointer] = Console.ReadKey().KeyChar;
         }
 
+        #endregion
+
+        #region Private methods
+
         /// <summary>
-        /// Returns value from current cell.
+        /// Ensures memory size is enough for accessing data in current cell.
         /// </summary>
-        public TValue Get()
+        private void EnsureMemoryExpanded()
         {
-            return default(TValue);
+            if (_pointer >= _memory.Count)
+            {
+                int difference = _pointer - _memory.Count + 1;
+                _memory.AddRange(Enumerable.Repeat(default(char), difference));
+            }
         }
 
         #endregion
