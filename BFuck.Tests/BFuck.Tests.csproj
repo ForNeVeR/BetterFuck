@@ -9,8 +9,8 @@
     <ProjectGuid>{DEAA66A3-AFB3-433D-B420-A6096F731707}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BFuck.Runtime.Tests</RootNamespace>
-    <AssemblyName>BFuck.Runtime.Tests</AssemblyName>
+    <RootNamespace>BFuck.Tests</RootNamespace>
+    <AssemblyName>BFuck.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -45,10 +45,15 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EngineTest.cs" />
+    <Compile Include="EmitterTests.cs" />
+    <Compile Include="EngineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BFuck.Compiler\BFuck.Compiler.csproj">
+      <Project>{1003D4A3-B0C5-4AD6-8B83-0A947CFD6705}</Project>
+      <Name>BFuck.Compiler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BFuck.Runtime\BFuck.Runtime.csproj">
       <Project>{D2C2DE06-5F45-473E-AB08-4BAB8A592B4F}</Project>
       <Name>BFuck.Runtime</Name>

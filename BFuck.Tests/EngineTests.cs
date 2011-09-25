@@ -19,15 +19,16 @@
  * THE SOFTWARE.
  */
 
+using BFuck.Runtime;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BFuck.Runtime.Tests
+namespace BFuck.Tests
 {
     /// <summary>
     /// Class for testing BFuck.Runtime.Engine.
     /// </summary>
     [TestClass]
-    public class EngineTest
+    public class EngineTests
     {
         /// <summary>
         /// Tests default memory allocation.
