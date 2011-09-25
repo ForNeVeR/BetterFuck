@@ -31,11 +31,58 @@ or Mono runtimes.
 
 Usage
 =====
-There is still no any user-oriented interface for the compiler. Please come back
-later.
+To use compiler, first save your Brainfuck code to plain text file (encoding does
+not matter, but it is recommended to use UTF-8 with or without BOM for any
+purposes). File extension does not matter either, but it is common practice to
+use `.b` extension for Brainfuck sources. If you're new to Brainfuck, look next
+section for additional information about Brainfuck language.
 
-About language and runtime
-==========================
+Then you can run `BFuck.Console` frontend to compile your source. Consider this:
+
+    > ls
+    BFuck.Compiler.dll
+    BFuck.Console.exe
+    BFuck.Runtime.dll
+    source.b
+
+Here `BFuck.Compiler.dll`, `BFuck.Console.exe` and `BFuck.Runtime.dll` are
+necessary BetterFuck libraries and `source.b` is user-written Brainfuck source
+file. For this example, we'll use simple source:
+
+    > cat source.b
+    ,+.,+.,+.
+
+This program reads three characters from input stream and prints next character
+for each character read.
+
+Compile our program:
+
+    > BFuck.Console source.b
+    source.b... ok.
+
+(In non-Windows environments you may experience problems when running CLR
+executables from terminal; use `mono BFuck.Console source.b` command then.)
+
+Now we got two additional files in our directory: `source.exe` and `source.mod`.
+`source.mod` is main program module containing executable code. `source.exe` is
+almost-empty executable module necessary for running main module. Let's test
+them:
+
+    > source.exe
+    abcdef
+
+(Here I entered letters 'acd' with my keyboard, and program inserted one
+additionnal character after evefy my keypress.)
+
+(Same comments about running Mono-related stuff in non-Windows environments
+applies here.)
+
+Not that your compiled assembly (source.exe in our case) references
+BFuck.Runtime assembly so it have to be in the same directory for you program to
+function properly.
+
+About the language
+==================
 BetterFuck runtime machine is simple collection of memory cells. Every cell is of
 CLR type System.Char and therefore can store values from 0 to 65535. Every value
 can be interpreted as ordinary character and be printed to Unicode-aware output
