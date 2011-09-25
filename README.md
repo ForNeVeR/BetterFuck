@@ -72,7 +72,7 @@ them:
     abcdef
 
 (Here I've entered letters `acd` with my keyboard, and program inserted one
-additional character after evefy my keypress.)
+additional character after every my keypress.)
 
 (Same comments about running Mono-related stuff in non-Windows environments
 applies here.)
