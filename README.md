@@ -60,7 +60,7 @@ In Brainfuck, there are only 8 single-character commands:
 
 7. `[` for starting loop.
 
-8. `]` for jumping to previous `[` if current cell value is not equal to 0.
+8. `]` for jumping to previous `[` if current cell value is not equal to 0;
 proceeds to next command otherwise.
 
 Source code can include any other characters; they will be dropped before
