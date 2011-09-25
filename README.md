@@ -25,6 +25,38 @@ THE SOFTWARE.
 
 About
 =====
-BetterFuck is a project for managed brainfuck language compiler. Compiled
-programs are ordinary CLR assemblies (and can be executed under MS .NET or Mono
-runtimes).
+BetterFuck is a Brainfuck language compiler into managed code (CLR). Compiled
+programs are ordinary CLR assemblies and therefore can be executed under MS .NET
+or Mono runtimes.
+
+Usage
+=====
+There is still no any user-oriented interface for the compiler. Please come back
+later.
+
+About language and runtime
+==========================
+BetterFuck runtime machine is simple collection of memory cells. Every cell is of
+CLR type System.Char and therefore can store values from 0 to 65535. Every value
+can be interpreted as ordinary character and be printed to Unicode-aware output
+stream.
+
+Count of cells can be changed when configuring BetterFuck engine; current default
+is 256 cells.
+
+In Brainfuck, there are only 8 single-character commands:
+ * `+` for incrementing current cell value;
+ * `-` for decrementing current cell value;
+ * `>` for moving one cell right (forward);
+ * `<` for moving one cell left (back);
+ * `.` for writing current cell value to output stream;
+ * `,` for reading single character from input stream to current cell;
+ * `[` for starting loop;
+ * `]` for jumping to previous `[` if current cell value is not equal to 0;
+proceeds to next command otherwise.
+
+Source code can include any other characters; they will be dropped before
+compilation.
+
+BetterFuck compiler also introduces the concept of comments. Any piece of line
+starting with `#` character will be treated as comment till end of line.
