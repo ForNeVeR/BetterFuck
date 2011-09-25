@@ -73,7 +73,7 @@ namespace BFuck.Compiler
         private static void ProduceInitCode(ILGenerator ilGenerator)
         {
             ilGenerator.BeginScope();
-            ilGenerator.Emit(OpCodes.Ldarg, DefaultMemorySize);
+            ilGenerator.Emit(OpCodes.Ldc_I4, DefaultMemorySize);
 
             var constructorInfo = typeof (Engine).GetConstructor(new[] {typeof (int)});
             ilGenerator.Emit(OpCodes.Call, constructorInfo);
