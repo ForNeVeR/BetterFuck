@@ -38,13 +38,11 @@ namespace BFuck.Tests
         {
             const int memorySize = 100;
             var engine = new Engine(memorySize);
-            char mem_0 = engine.Get();
-            Assert.AreEqual(mem_0, '\0');
+            Assert.AreEqual(engine.Get(), 0);
             for (int i = 0; i < memorySize; ++i)
             {
                 engine.Forward();
-                char mem_i = engine.Get();
-                Assert.AreEqual(mem_i, '\0');
+                Assert.AreEqual(engine.Get(), 0);
             }
         }
 
@@ -59,14 +57,14 @@ namespace BFuck.Tests
             for (int i = 0; i < iterations; ++i)
             {
                 engine.Add();
-                Assert.AreEqual(engine.Get(), (char) i + 1);
+                Assert.AreEqual(engine.Get(), i + 1);
             }
             for (int i = 0; i < iterations; ++i)
             {
                 engine.Dec();
-                Assert.AreEqual(engine.Get(), (char) iterations - i - 1);
+                Assert.AreEqual(engine.Get(), iterations - i - 1);
             }
-            Assert.AreEqual(engine.Get(), '\0');
+            Assert.AreEqual(engine.Get(), 0);
         }
 
         /// <summary>
@@ -82,7 +80,7 @@ namespace BFuck.Tests
             {
                 engine.Forward();
             }
-            Assert.AreEqual(engine.Get(), '\x01');
+            Assert.AreEqual(engine.Get(), 1);
         }
     }
 }

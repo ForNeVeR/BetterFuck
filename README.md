@@ -84,7 +84,7 @@ function properly.
 About the language
 ==================
 BetterFuck runtime machine is simple collection of memory cells. Every cell is of
-CLR type System.Char and therefore can store values from 0 to 65535. Every value
+CLR type System.Int16 and therefore can store values from 0 to 65535. Every value
 can be interpreted as ordinary character and be printed to Unicode-aware output
 stream.
 

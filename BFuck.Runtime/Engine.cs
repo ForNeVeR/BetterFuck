@@ -45,7 +45,7 @@ namespace BFuck.Runtime
         /// <summary>
         /// List of memory values.
         /// </summary>
-        private readonly List<char> _memory;
+        private readonly List<short> _memory;
 
         #endregion
 
@@ -58,10 +58,7 @@ namespace BFuck.Runtime
         public Engine(int memorySize)
         {
             _memorySize = memorySize;
-            _memory = new List<char>();
-#if DEBUG
-            Console.WriteLine("BetterFuck engine with memory size of {0} characters created.", memorySize);
-#endif
+            _memory = new List<short>();
         }
 
         #endregion
@@ -98,7 +95,7 @@ namespace BFuck.Runtime
         public void Add()
         {
             EnsureMemoryExpanded();
-            _memory[_pointer] += (char) 1;
+            _memory[_pointer] += 1;
         }
 
         /// <summary>
@@ -107,13 +104,13 @@ namespace BFuck.Runtime
         public void Dec()
         {
             EnsureMemoryExpanded();
-            _memory[_pointer] -= (char)1;
+            _memory[_pointer] -= 1;
         }
 
         /// <summary>
         /// Returns value from current cell.
         /// </summary>
-        public char Get()
+        public short Get()
         {
             EnsureMemoryExpanded();
             return _memory[_pointer];
@@ -138,7 +135,7 @@ namespace BFuck.Runtime
         public void In()
         {
             EnsureMemoryExpanded();
-            _memory[_pointer] = Console.ReadKey().KeyChar;
+            _memory[_pointer] = (short) Console.ReadKey().KeyChar;
         }
 
         #endregion
@@ -153,7 +150,7 @@ namespace BFuck.Runtime
             if (_pointer >= _memory.Count)
             {
                 int difference = _pointer - _memory.Count + 1;
-                _memory.AddRange(Enumerable.Repeat(default(char), difference));
+                _memory.AddRange(Enumerable.Repeat((short) 0, difference));
             }
         }
 
