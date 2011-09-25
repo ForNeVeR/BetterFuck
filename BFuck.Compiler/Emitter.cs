@@ -34,6 +34,7 @@ namespace BFuck.Compiler
 
             ProduceInitCode(ilGenerator);
             ProduceCode(source, ilGenerator);
+            ProduceFinalCode(ilGenerator);
 
             assemblyBuilder.Save(fileName);
         }
@@ -70,6 +71,15 @@ namespace BFuck.Compiler
 
             var constructorInfo = typeof (Engine).GetConstructor(new[] {typeof (int)});
             ilGenerator.Emit(OpCodes.Call, constructorInfo);
+        }
+
+        /// <summary>
+        /// Produces BetterFuck finalization code for Main method in target assembly.
+        /// </summary>
+        /// <param name="ilGenerator"></param>
+        private static void ProduceFinalCode(ILGenerator ilGenerator)
+        {
+            ilGenerator.Emit(OpCodes.Ret);
         }
 
         /// <summary>
