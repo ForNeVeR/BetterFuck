@@ -59,6 +59,9 @@ namespace BFuck.Runtime
         {
             _memorySize = memorySize;
             _memory = new List<char>();
+#if DEBUG
+            Console.WriteLine("BetterFuck engine with memory size of {0} characters created.", memorySize);
+#endif
         }
 
         #endregion
