@@ -29,7 +29,8 @@ namespace BFuck.Compiler
                 AssemblyBuilderAccess.Save);
             var moduleBuilder = assemblyBuilder.DefineDynamicModule(name);
             var typeBuilder = moduleBuilder.DefineType("BetterFuck", TypeAttributes.Public | TypeAttributes.Class);
-            var methodBuilder = typeBuilder.DefineMethod("Main", MethodAttributes.Public | MethodAttributes.Static);
+            var methodBuilder = typeBuilder.DefineMethod("Main", MethodAttributes.Public | MethodAttributes.Static,
+                typeof(void), new Type[0]);
             var ilGenerator = methodBuilder.GetILGenerator();
 
             ProduceInitCode(ilGenerator);
