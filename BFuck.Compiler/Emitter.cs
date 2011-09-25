@@ -44,7 +44,7 @@ namespace BFuck.Compiler
         public static void Compile(string name, string source, string fileName)
         {
             source = StripComments(source);
-            
+
             var assemblyName = new AssemblyName(name);
             var assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName,
                 AssemblyBuilderAccess.Save);
@@ -53,7 +53,7 @@ namespace BFuck.Compiler
                 TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.BeforeFieldInit);
             var methodBuilder = typeBuilder.DefineMethod("Main", MethodAttributes.Public | MethodAttributes.Static,
                 typeof(void), new Type[0]);
-            
+
             assemblyBuilder.SetEntryPoint(methodBuilder);
             var ilGenerator = methodBuilder.GetILGenerator();
 
@@ -95,10 +95,10 @@ namespace BFuck.Compiler
         {
             ilGenerator.BeginScope();
 
-            ilGenerator.DeclareLocal(typeof (Engine));
+            ilGenerator.DeclareLocal(typeof(Engine));
             ilGenerator.Emit(OpCodes.Ldc_I4, DefaultMemorySize);
 
-            var constructorInfo = typeof (Engine).GetConstructor(new[] {typeof (int)});
+            var constructorInfo = typeof(Engine).GetConstructor(new[] { typeof(int) });
             ilGenerator.Emit(OpCodes.Newobj, constructorInfo);
             ilGenerator.Emit(OpCodes.Stloc_0);
         }
@@ -144,10 +144,19 @@ namespace BFuck.Compiler
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("In"), null);
                         break;
                     case '[':
-                    case ']':
-                        // TODO: Add loop implementation.
+                        var label = ilGenerator.DefineLabel();
+                        int endLoop = code.IndexOf(']', i + 1);
+                        if (endLoop == -1)
+                            throw new Exception(String.Format("Square bracket at index {0} is not closed.", i));
+                        string innerCode = code.Substring(i, endLoop - i - 1);
+                        ProduceCode(innerCode, ilGenerator);
+                        ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Get"), null);
+                        ilGenerator.Emit(OpCodes.Ldc_I4, 0);
+                        ilGenerator.Emit(OpCodes.Beq, label);
+                        i = endLoop + 1;
+                        break;
                     default:
-                        throw new NotSupportedException("Unsupported operation queried.");
+                        throw new NotSupportedException("Unsupported operation required.");
                 }
             }
         }
