@@ -45,14 +45,14 @@ Count of cells can be changed when configuring BetterFuck engine; current defaul
 is 256 cells.
 
 In Brainfuck, there are only 8 single-character commands:
- * `+` for incrementing current cell value;
- * `-` for decrementing current cell value;
- * `>` for moving one cell right (forward);
- * `<` for moving one cell left (back);
- * `.` for writing current cell value to output stream;
- * `,` for reading single character from input stream to current cell;
- * `[` for starting loop;
- * `]` for jumping to previous `[` if current cell value is not equal to 0;
+    1. `+` for incrementing current cell value.
+    2. `-` for decrementing current cell value.
+    3. `>` for moving one cell right (forward).
+    4. `<` for moving one cell left (back).
+    5. `.` for writing current cell value to output stream.
+    6. `,` for reading single character from input stream to current cell.
+    7. `[` for starting loop.
+    8. `]` for jumping to previous `[` if current cell value is not equal to 0.
 proceeds to next command otherwise.
 
 Source code can include any other characters; they will be dropped before
