@@ -126,7 +126,7 @@ namespace BFuck.Runtime
         public void Out()
         {
             EnsureMemoryExpanded();
-            Console.Write(_memory[_pointer]);
+            Console.Write((char) _memory[_pointer]);
         }
 
         /// <summary>
