@@ -135,7 +135,7 @@ namespace BFuck.Compiler
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Forward"), null);
                         break;
                     case '<':
-                        ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Forward"), null);
+                        ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Back"), null);
                         break;
                     case '.':
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Out"), null);
