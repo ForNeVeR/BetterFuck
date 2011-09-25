@@ -144,7 +144,8 @@ namespace BFuck.Compiler
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("In"), null);
                         break;
                     case '[':
-                        var label = ilGenerator.DefineLabel();
+                        var loopStartLabel = ilGenerator.DefineLabel();
+                        ilGenerator.MarkLabel(loopStartLabel);
                         int endLoop = code.IndexOf(']', i + 1);
                         if (endLoop == -1)
                             throw new Exception(String.Format("Square bracket at index {0} is not closed.", i));
@@ -152,7 +153,7 @@ namespace BFuck.Compiler
                         ProduceCode(innerBlock, ilGenerator);
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Get"), null);
                         ilGenerator.Emit(OpCodes.Ldc_I4, 0);
-                        ilGenerator.Emit(OpCodes.Beq, label);
+                        ilGenerator.Emit(OpCodes.Beq, loopStartLabel);
                         i = endLoop + 1;
                         break;
                     default:
