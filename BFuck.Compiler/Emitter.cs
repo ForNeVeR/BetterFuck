@@ -27,16 +27,20 @@ namespace BFuck.Compiler
             var assemblyName = new AssemblyName(name);
             var assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName,
                 AssemblyBuilderAccess.Save);
-            var moduleBuilder = assemblyBuilder.DefineDynamicModule(name);
-            var typeBuilder = moduleBuilder.DefineType("BetterFuck", TypeAttributes.Public | TypeAttributes.Class);
+            var moduleBuilder = assemblyBuilder.DefineDynamicModule(name, name + ".mod");
+            var typeBuilder = moduleBuilder.DefineType("Program",
+                TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.BeforeFieldInit);
             var methodBuilder = typeBuilder.DefineMethod("Main", MethodAttributes.Public | MethodAttributes.Static,
                 typeof(void), new Type[0]);
+            
+            assemblyBuilder.SetEntryPoint(methodBuilder);
             var ilGenerator = methodBuilder.GetILGenerator();
 
             ProduceInitCode(ilGenerator);
             ProduceCode(source, ilGenerator);
             ProduceFinalCode(ilGenerator);
 
+            typeBuilder.CreateType();
             assemblyBuilder.Save(fileName);
         }
 
@@ -68,6 +72,7 @@ namespace BFuck.Compiler
         /// </summary>
         private static void ProduceInitCode(ILGenerator ilGenerator)
         {
+            ilGenerator.BeginScope();
             ilGenerator.Emit(OpCodes.Ldarg, DefaultMemorySize);
 
             var constructorInfo = typeof (Engine).GetConstructor(new[] {typeof (int)});
@@ -81,6 +86,7 @@ namespace BFuck.Compiler
         private static void ProduceFinalCode(ILGenerator ilGenerator)
         {
             ilGenerator.Emit(OpCodes.Ret);
+            ilGenerator.EndScope();
         }
 
         /// <summary>
