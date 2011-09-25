@@ -63,10 +63,7 @@ Compile our program:
 (In non-Windows environments you may experience problems when running CLR
 executables from terminal; use `mono BFuck.Console source.b` command then.)
 
-Now we got two additional files in our directory: `source.exe` and `source.mod`.
-`source.mod` is main program module containing executable code. `source.exe` is
-almost-empty executable module necessary for running main module. Let's test
-them:
+Now we got additional file in our directory: `source.exe`. Let's test it:
 
     > source.exe
     abcdef

@@ -48,7 +48,7 @@ namespace BFuck.Compiler
             var assemblyName = new AssemblyName(name);
             var assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName,
                 AssemblyBuilderAccess.Save);
-            var moduleBuilder = assemblyBuilder.DefineDynamicModule(name, name + ".mod");
+            var moduleBuilder = assemblyBuilder.DefineDynamicModule(assemblyBuilder.GetName().Name, fileName);
             var typeBuilder = moduleBuilder.DefineType("Program",
                 TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.BeforeFieldInit);
             var methodBuilder = typeBuilder.DefineMethod("Main", MethodAttributes.Public | MethodAttributes.Static,
