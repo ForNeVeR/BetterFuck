@@ -20,6 +20,7 @@
  */
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using BFuck.Compiler;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -38,7 +39,52 @@ namespace BFuck.Tests
         [TestMethod]
         public void EmptyProgramTest()
         {
-            Emitter.Compile(@"EmptyProgram", @"", @"EmptyProgram.exe");
+            const string fileName = @"EmptyProgram.exe";
+            Emitter.Compile(@"EmptyProgram", @"", fileName);
+            AssertOutput(fileName, @"");
+        }
+
+        /// <summary>
+        /// Tests single character output program.
+        /// </summary>
+        [TestMethod]
+        public void OutputTest()
+        {
+            const string fileName = @"OutputTest.exe";
+            Emitter.Compile(@"OutputTest", @"
+# Test some commands in comment: + > > < +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.", fileName);
+            AssertOutput(fileName, "<");
+        }
+
+        /// <summary>
+        /// Tests simple loop.
+        /// </summary>
+        [TestMethod]
+        public void LoopTest()
+        {
+            const string fileName = @"LoopTest.exe";
+            Emitter.Compile(@"LoopTest", @"
+# Same as above, but with loop.
+++++++[>++++++++++<-]>.", fileName);
+            AssertOutput(fileName, "<");
+        }
+
+        /// <summary>
+        /// Checks output of program to be equal to some test value.
+        /// </summary>
+        /// <param name="fileName">Program to be executed.</param>
+        /// <param name="output">Program output.</param>
+        private void AssertOutput(string fileName, string output)
+        {
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            var bytes = File.ReadAllBytes(fileName);
+            var assembly = AppDomain.CurrentDomain.Load(bytes);
+            assembly.EntryPoint.Invoke(null, null);
+
+            Assert.AreEqual(output, writer.ToString());
         }
     }
 }
