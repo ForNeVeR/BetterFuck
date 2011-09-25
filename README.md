@@ -74,19 +74,19 @@ additional character after every my keypress.)
 (Same comments about running Mono-related stuff in non-Windows environments
 applies here.)
 
-Not that your compiled assembly (source.exe in our case) references
-BFuck.Runtime assembly so it have to be in the same directory for you program to
-function properly.
+Not that your compiled assembly (`source.exe` in our case) references
+`BFuck.Runtime.dll` assembly so it have to be in the same directory for you
+program to function properly.
 
 About the language
 ==================
-BetterFuck runtime machine is simple collection of memory cells. Every cell is of
-CLR type System.Int16 and therefore can store values from 0 to 65535. Every value
-can be interpreted as ordinary character and be printed to Unicode-aware output
-stream.
+BetterFuck runtime machine is simple collection of memory cells. Every cell is
+of CLR type System.Int16 and therefore can store values from 0 to 65535. Every
+value can be interpreted as ordinary character and be printed to Unicode-aware
+output stream.
 
-Count of cells can be changed when configuring BetterFuck engine; current default
-is 256 cells.
+Count of cells can be changed when configuring BetterFuck engine; current
+default is 256 cells.
 
 In Brainfuck, there are only 8 single-character commands:
 
