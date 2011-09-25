@@ -122,25 +122,30 @@ namespace BFuck.Compiler
         {
             for (int i = 0; i < code.Length; ++i)
             {
-                ilGenerator.Emit(OpCodes.Ldloc_0);
                 switch (code[i])
                 {
                     case '+':
+                        ilGenerator.Emit(OpCodes.Ldloc_0);
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Add"), null);
                         break;
                     case '-':
+                        ilGenerator.Emit(OpCodes.Ldloc_0);
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Dec"), null);
                         break;
                     case '>':
+                        ilGenerator.Emit(OpCodes.Ldloc_0);
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Forward"), null);
                         break;
                     case '<':
+                        ilGenerator.Emit(OpCodes.Ldloc_0);
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Back"), null);
                         break;
                     case '.':
+                        ilGenerator.Emit(OpCodes.Ldloc_0);
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Out"), null);
                         break;
                     case ',':
+                        ilGenerator.Emit(OpCodes.Ldloc_0);
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("In"), null);
                         break;
                     case '[':
@@ -151,10 +156,11 @@ namespace BFuck.Compiler
                             throw new Exception(String.Format("Square bracket at index {0} is not closed.", i));
                         string innerBlock = code.Substring(i + 1, endLoop - i - 1);
                         ProduceCode(innerBlock, ilGenerator);
+                        ilGenerator.Emit(OpCodes.Ldloc_0);
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Get"), null);
                         ilGenerator.Emit(OpCodes.Ldc_I4, 0);
-                        ilGenerator.Emit(OpCodes.Beq, loopStartLabel);
-                        i = endLoop + 1;
+                        ilGenerator.Emit(OpCodes.Bne_Un_S, loopStartLabel);
+                        i = endLoop;
                         break;
                     default:
                         throw new NotSupportedException("Unsupported operation required.");

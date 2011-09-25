@@ -54,7 +54,7 @@ namespace BFuck.Tests
             Emitter.Compile(@"OutputTest", @"
 # Test some commands in comment: + > > < +
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.", fileName);
-            AssertOutput(fileName, "<");
+            AssertOutput(fileName, "<"); // character with code 60
         }
 
         /// <summary>
