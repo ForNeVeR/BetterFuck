@@ -71,8 +71,8 @@ them:
     > source.exe
     abcdef
 
-(Here I entered letters 'acd' with my keyboard, and program inserted one
-additionnal character after evefy my keypress.)
+(Here I've entered letters `acd` with my keyboard, and program inserted one
+additional character after evefy my keypress.)
 
 (Same comments about running Mono-related stuff in non-Windows environments
 applies here.)
