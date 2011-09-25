@@ -148,8 +148,8 @@ namespace BFuck.Compiler
                         int endLoop = code.IndexOf(']', i + 1);
                         if (endLoop == -1)
                             throw new Exception(String.Format("Square bracket at index {0} is not closed.", i));
-                        string innerCode = code.Substring(i, endLoop - i - 1);
-                        ProduceCode(innerCode, ilGenerator);
+                        string innerBlock = code.Substring(i + 1, endLoop - i - 1);
+                        ProduceCode(innerBlock, ilGenerator);
                         ilGenerator.EmitCall(OpCodes.Call, typeof(Engine).GetMethod("Get"), null);
                         ilGenerator.Emit(OpCodes.Ldc_I4, 0);
                         ilGenerator.Emit(OpCodes.Beq, label);
