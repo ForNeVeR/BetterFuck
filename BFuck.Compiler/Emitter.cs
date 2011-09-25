@@ -78,7 +78,7 @@ namespace BFuck.Compiler
             {
                 foreach (var character in line)
                 {
-                    if (new[] { '+', '-', '>', '<', '.', ',' }.Contains(character))
+                    if (new[] { '+', '-', '>', '<', '.', ',', '[', ']' }.Contains(character))
                         result.Append(character);
                     else if (character == '#')
                         break;
