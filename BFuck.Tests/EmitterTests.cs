@@ -19,6 +19,8 @@
  * THE SOFTWARE.
  */
 
+using System;
+using System.IO;
 using BFuck.Compiler;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -36,8 +38,7 @@ namespace BFuck.Tests
         [TestMethod]
         public void EmptyProgramTest()
         {
-            var source = "";
-            Emitter.Compile("EmptyProgram", source, @"TestResults\EmptyProgram.exe");
+            Emitter.Compile(@"EmptyProgram", @"", @"EmptyProgram.exe");
         }
     }
 }
