@@ -118,8 +118,10 @@ namespace BFuck.Runtime
         /// </summary>
         public short Get()
         {
-            EnsureMemoryExpanded();
-            return _memory[_pointer];
+            if (_memory.Count > _pointer)
+                return _memory[_pointer];
+            else
+                return 0;
         }
 
         #endregion
