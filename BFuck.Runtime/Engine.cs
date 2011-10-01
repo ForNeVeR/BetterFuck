@@ -47,6 +47,11 @@ namespace BFuck.Runtime
         /// </summary>
         private readonly List<short> _memory;
 
+        /// <summary>
+        /// Dictionary for pbrain procedures.
+        /// </summary>
+        private readonly Dictionary<short, Action> _procedures;
+
         #endregion
 
         #region Constructor
@@ -59,6 +64,7 @@ namespace BFuck.Runtime
         {
             _memorySize = memorySize;
             _memory = new List<short>();
+            _procedures = new Dictionary<short, Action>();
         }
 
         #endregion
@@ -136,6 +142,27 @@ namespace BFuck.Runtime
         {
             EnsureMemoryExpanded();
             _memory[_pointer] = (short) Console.ReadKey().KeyChar;
+        }
+
+        #endregion
+
+        #region pbrain support
+
+        /// <summary>
+        /// Associates a procedure with code taken from current cell.
+        /// </summary>
+        /// <param name="procedure">Procedure to register.</param>
+        public void Register(Action procedure)
+        {
+            _procedures[Get()] = procedure;
+        }
+
+        /// <summary>
+        /// Calls a procedure associated with code taken from current cell.
+        /// </summary>
+        public void Call()
+        {
+            _procedures[Get()]();
         }
 
         #endregion
