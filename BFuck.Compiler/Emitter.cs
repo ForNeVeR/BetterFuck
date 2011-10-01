@@ -151,9 +151,7 @@ namespace BFuck.Compiler
                     case '[':
                         var loopStartLabel = ilGenerator.DefineLabel();
                         ilGenerator.MarkLabel(loopStartLabel);
-                        int endLoop = code.IndexOf(']', i + 1);
-                        if (endLoop == -1)
-                            throw new Exception(String.Format("Square bracket at index {0} is not closed.", i));
+                        int endLoop = FindClosingBrace(code, i);
                         string innerBlock = code.Substring(i + 1, endLoop - i - 1);
                         ProduceCode(innerBlock, ilGenerator);
                         ilGenerator.Emit(OpCodes.Ldloc_0);
@@ -166,6 +164,30 @@ namespace BFuck.Compiler
                         throw new NotSupportedException("Unsupported operation required.");
                 }
             }
+        }
+
+        /// <summary>
+        /// Finds closing brace in <paramref name="code"/> for brace at
+        /// <paramref name="code"/>[<paramref name="index"/>].
+        /// </summary>
+        /// <param name="code">Code to search for brace.</param>
+        /// <param name="index">Index of opening brace.</param>
+        /// <returns></returns>
+        private static int FindClosingBrace(string code, int index)
+        {
+            if (code[index] != '[')
+                throw new Exception("Not opened brace.");
+
+            for (int i = index + 1; i < code.Length; ++i)
+            {
+                if (code[i] == '[')
+                    i = FindClosingBrace(code, i);
+                else if (code[i] == ']')
+                    return i;
+            }
+
+            throw new Exception(string.Format(
+                "Cannot find closing brace for brace at position {0} in code fragment \"{1}\".", index, code));
         }
     }
 }
