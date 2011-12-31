@@ -162,7 +162,7 @@ namespace BFuck.Compiler
                         ilGenerator.Emit(OpCodes.Ldloc_0);
                         ilGenerator.EmitCall(OpCodes.Call, typeof (Engine).GetMethod("Get"), null);
                         ilGenerator.Emit(OpCodes.Ldc_I4, 0);
-                        ilGenerator.Emit(OpCodes.Bne_Un_S, loopStartLabel);
+                        ilGenerator.Emit(OpCodes.Bne_Un, loopStartLabel);
                         i += innerBlock.Length + 1;
                         break;
                     case '(':
