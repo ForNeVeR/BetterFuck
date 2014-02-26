@@ -68,7 +68,7 @@ Now we got additional file in our directory: `source.exe`. Let's test it:
     > source.exe
     abcdef
 
-(Here I've entered letters `acd` with my keyboard, and program inserted one
+(Here I've entered letters `ace` with my keyboard, and program inserted one
 additional character after every my keypress.)
 
 (Same comments about running Mono-related stuff in non-Windows environments
