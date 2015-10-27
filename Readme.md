@@ -1,4 +1,4 @@
-BetterFuck
+BetterFuck [![Status Aquana](https://img.shields.io/badge/status-aquana-yellowgreen.svg)](https://github.com/ForNeVeR/andivionian-status-classifier)
 ==========
 
 About
