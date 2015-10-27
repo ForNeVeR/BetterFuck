@@ -1,15 +1,18 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFuck.Runtime", "BFuck.Runtime\BFuck.Runtime.csproj", "{D2C2DE06-5F45-473E-AB08-4BAB8A592B4F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFuck.Tests", "BFuck.Tests\BFuck.Tests.csproj", "{DEAA66A3-AFB3-433D-B420-A6096F731707}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{45561044-530B-4BBA-97BE-FDAEE7A019E5}"
 	ProjectSection(SolutionItems) = preProject
-		BetterFuck.vsmdi = BetterFuck.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		License.md = License.md
+		Readme.md = Readme.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFuck.Compiler", "BFuck.Compiler\BFuck.Compiler.csproj", "{1003D4A3-B0C5-4AD6-8B83-0A947CFD6705}"
@@ -17,9 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFuck.Console", "BFuck.Console\BFuck.Console.csproj", "{0B7C6D78-F546-40C8-9D71-278FE417A813}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = BetterFuck.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -44,5 +44,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = BetterFuck.vsmdi
 	EndGlobalSection
 EndGlobal

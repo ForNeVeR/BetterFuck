@@ -1,36 +1,14 @@
 BetterFuck
 ==========
 
-License
-=======
-Copyright (C) 2011 by ForNeVeR
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
 About
-=====
+-----
 BetterFuck is a Brainfuck language compiler into managed code (CLR). Compiled
 programs are ordinary CLR assemblies and therefore can be executed under MS .NET
 or Mono runtimes.
 
 Usage
-=====
+-----
 To use compiler, first save your Brainfuck code to plain text file (encoding does
 not matter, but it is recommended to use UTF-8 with or without BOM for any
 purposes). File extension does not matter either, but it is common practice to
@@ -79,7 +57,7 @@ Not that your compiled assembly (`source.exe` in our case) references
 program to function properly.
 
 About the language
-==================
+------------------
 BetterFuck runtime machine is simple collection of memory cells. Every cell is
 of CLR type System.Int16 and therefore can store values from 0 to 65535. Every
 value can be interpreted as ordinary character and be printed to Unicode-aware
