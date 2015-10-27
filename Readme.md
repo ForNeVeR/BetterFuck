@@ -39,7 +39,7 @@ Compile our program:
     source.b... ok.
 
 (In non-Windows environments you may experience problems when running CLR
-executables from terminal; use `mono BFuck.Console source.b` command then.)
+executables from terminal; use `mono BFuck.Console.exe source.b` command then.)
 
 Now we got additional file in our directory: `source.exe`. Let's test it:
 
