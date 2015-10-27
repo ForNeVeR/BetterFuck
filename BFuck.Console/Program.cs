@@ -15,7 +15,10 @@ namespace BFuck.Console
         public static void Main(string[] args)
         {
             if (args.Length < 1 || args[0] == @"--help")
+            {
                 PrintHelp();
+                return;
+            }
 
             foreach (var arg in args)
             {
