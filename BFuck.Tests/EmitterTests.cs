@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using BFuck.Compiler;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace BFuck.Tests
 {
     /// <summary>
     /// Class for testing BFuck.Compiler.Emitter.
     /// </summary>
-    [TestClass]
     public class EmitterTests
     {
         /// <summary>
         /// Test of empty source code compiling.
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void EmptyProgramTest()
         {
             const string fileName = @"EmptyProgram.exe";
@@ -26,7 +24,7 @@ namespace BFuck.Tests
         /// <summary>
         /// Tests single character output program.
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void OutputTest()
         {
             const string fileName = @"OutputTest.exe";
@@ -39,7 +37,7 @@ namespace BFuck.Tests
         /// <summary>
         /// Tests simple loop.
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void LoopTest()
         {
             const string fileName = @"LoopTest.exe";
@@ -63,7 +61,7 @@ namespace BFuck.Tests
             var assembly = AppDomain.CurrentDomain.Load(bytes);
             assembly.EntryPoint.Invoke(null, null);
 
-            Assert.AreEqual(output, writer.ToString());
+            Assert.Equal(output, writer.ToString());
         }
     }
 }
