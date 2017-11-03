@@ -1,6 +1,8 @@
-*.suo
+/.idea/
+/.vs/
+/packages/
+
 bin/
 obj/
-_ReSharper.*
-TestResults/
+
 *.user
