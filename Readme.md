@@ -1,4 +1,4 @@
-BetterFuck [![Status Aquana][status-aquana]][andivionian-status-classifier] [![Build Status][badge-travis]][build-travis]
+BetterFuck [![Status Aquana][status-aquana]][andivionian-status-classifier] [![Build status][badge-appveyor]][build-appveyor] [![Build Status][badge-travis]][build-travis]
 ==========
 
 About
@@ -92,7 +92,9 @@ BetterFuck compiler also introduces the concept of comments. Any piece of line
 starting with `#` character will be treated as comment till end of line.
 
 [andivionian-status-classifier]: https://github.com/ForNeVeR/andivionian-status-classifier#status-aquana-
+[build-appveyor]: https://ci.appveyor.com/project/ForNeVeR/betterfuck/branch/develop
 [build-travis]: https://travis-ci.org/ForNeVeR/BetterFuck
 
+[badge-appveyor]: https://ci.appveyor.com/api/projects/status/1cqgyhipyausce5g/branch/develop?svg=true
 [badge-travis]: https://travis-ci.org/ForNeVeR/BetterFuck.svg?branch=develop
 [status-aquana]: https://img.shields.io/badge/status-aquana-yellowgreen.svg

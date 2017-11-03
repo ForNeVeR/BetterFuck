@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.travis.yml = .travis.yml
 		License.md = License.md
 		Readme.md = Readme.md
+		appveyor.yml = appveyor.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFuck.Compiler", "BFuck.Compiler\BFuck.Compiler.csproj", "{1003D4A3-B0C5-4AD6-8B83-0A947CFD6705}"
