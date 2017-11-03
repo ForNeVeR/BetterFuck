@@ -1,4 +1,4 @@
-BetterFuck [![Status Aquana](https://img.shields.io/badge/status-aquana-yellowgreen.svg)](https://github.com/ForNeVeR/andivionian-status-classifier)
+BetterFuck [![Status Aquana][status-aquana]][andivionian-status-classifier]
 ==========
 
 About
@@ -90,3 +90,7 @@ compilation.
 
 BetterFuck compiler also introduces the concept of comments. Any piece of line
 starting with `#` character will be treated as comment till end of line.
+
+[andivionian-status-classifier]: https://github.com/ForNeVeR/andivionian-status-classifier#status-aquana-
+
+[status-aquana]: https://img.shields.io/badge/status-aquana-yellowgreen.svg
