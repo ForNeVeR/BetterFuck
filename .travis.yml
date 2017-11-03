@@ -1,0 +1,8 @@
+language: csharp
+mono: latest
+solution: BetterFuck.sln
+install:
+  - nuget restore BetterFuck.sln
+script:
+  - xbuild /p:Configuration=Release /p:TargetFrameworkVersion="v4.5" BetterFuck.sln
+  - mono ./packages/xunit.runner.console.2.3.1/tools/net452/xunit.console.exe ./BFuck.Tests/bin/Release/BFuck.Tests.dll
