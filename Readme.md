@@ -12,8 +12,8 @@ Usage
 To use compiler, first save your Brainfuck code to plain text file (encoding does
 not matter, but it is recommended to use UTF-8 with or without BOM for any
 purposes). File extension does not matter either, but it is common practice to
-use `.b` extension for Brainfuck sources. If you're new to Brainfuck, look next
-section for additional information about Brainfuck language.
+use `.b` extension for Brainfuck sources. If you're new to Brainfuck, see below for
+additional information about Brainfuck language.
 
 Then you can run `BFuck.Console` frontend to compile your source. Consider this:
 
@@ -52,13 +52,13 @@ additional character after every my keypress.)
 (Same comments about running Mono-related stuff in non-Windows environments
 applies here.)
 
-Not that your compiled assembly (`source.exe` in our case) references
-`BFuck.Runtime.dll` assembly so it have to be in the same directory for you
+Note that your compiled assembly (`source.exe` in our case) references
+`BFuck.Runtime.dll` assembly so it has to be in the same directory for your
 program to function properly.
 
 About the language
 ------------------
-BetterFuck runtime machine is simple collection of memory cells. Every cell is
+BetterFuck runtime machine is a simple collection of memory cells. Every cell is
 of CLR type System.Int16 and therefore can store values from 0 to 65535. Every
 value can be interpreted as ordinary character and be printed to Unicode-aware
 output stream.
