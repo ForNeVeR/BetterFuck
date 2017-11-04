@@ -9,11 +9,11 @@ or Mono runtimes.
 
 Usage
 -----
-To use compiler, first save your Brainfuck code to plain text file (encoding does
-not matter, but it is recommended to use UTF-8 with or without BOM for any
+To use compiler, first save your Brainfuck code to plain text file (encoding
+does not matter, but it is recommended to use UTF-8 with or without BOM for any
 purposes). File extension does not matter either, but it is common practice to
-use `.b` extension for Brainfuck sources. If you're new to Brainfuck, see below for
-additional information about Brainfuck language.
+use `.b` extension for Brainfuck sources. If you're new to Brainfuck, see below
+for additional information about Brainfuck language.
 
 Then you can run `BFuck.Console` frontend to compile your source. Consider this:
 
@@ -83,7 +83,7 @@ In Brainfuck, there are only 8 single-character commands:
 7. `[` for starting loop.
 
 8. `]` for jumping to previous `[` if current cell value is not equal to 0;
-proceeds to next command otherwise.
+   proceeds to next command otherwise.
 
 Source code can include any other characters; they will be dropped before
 compilation.
